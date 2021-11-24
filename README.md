@@ -20,6 +20,7 @@ Options:
 https://datatracker.ietf.org/doc/html/rfc6350#section-6.2.2
 
 |Name|GivenNames|AdditionalNames|Prefixes|Suffixes|
+|----|----------|---------------|--------|--------|
 
 ### PHOTO:
 https://datatracker.ietf.org/doc/html/rfc6350#section-6.2.4
