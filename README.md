@@ -19,51 +19,59 @@ Options:
 ### N:
 https://datatracker.ietf.org/doc/html/rfc6350#section-6.2.2
 
-[Name]
-[GivenNames]
-[AdditionalNames]
-[Prefixes]
-[Suffixes]
+|Name|GivenNames|AdditionalNames|Prefixes|Suffixes|
 
 ### PHOTO:
 https://datatracker.ietf.org/doc/html/rfc6350#section-6.2.4
 
 Is Base64-Encodet-Img or a URL
 
-[Photo]
+|Photo|
 
 ### ADR:
 https://datatracker.ietf.org/doc/html/rfc6350#section-6.3.1
 
-[PostOfficeBox(None|Work|Home)][ExtendedAddress(None|Work|Home)][Street(None|Work|Home)][City(None|Work|Home)][Region(None|Work|Home)][PostalCodeNone|Work|Home)][Country(None|Work|Home)]
+|PostOfficeBox|PostOfficeBoxWork|PostOfficeBoxHome|
+|ExtendedAddress|ExtendedAddressWork|ExtendedAddressHome|
+|Street|StreetWork|StreetHome|
+|City|CityWork|CityHome|
+|Region|RegionWork|RegionHome|
+|PostalCode|PostalCodeWork|PostalCodeHome|
+|Country|CountryWork|CountryHome|
 
 ### TEL:
 https://datatracker.ietf.org/doc/html/rfc6350#section-6.4.1
 
 #### CSV-Header:
-[TelText(Work|Home|0|1|2|3)][TelVoice(Work|Home|0|1|2|3)][TelFax(Work|Home|0|1|2|3)][TelCell(Work|Home|0|1|2|3)][TelVideo(Work|Home|0|1|2|3)][TelPager(Work|Home|0|1|2|3)][TelTextphone(Work|Home|0|1|2|3)]
+|TelVoiceWork|TelVoiceHome|TelVoice0|TelVoice1|TelVoice2|TelVoice3|
+|TelFaxWork|TelFaxHome|TelFax0|TelFax1|TelFax2|TelFax3|
+|TelCellWork|TelCellHome|TelCell0|TelCell1|TelCell2|TelCell3|
+|TelTextWork|TelTextHome|TelText0|TelText1|TelText2|TelText3|
+|TelVideoHome|TelVideoHome|TelVideo0|TelVideo1|TelVideo2|TelVideo3|
+|TelPagerWork|TelPagerHome|TelPager0|TelPager1|TelPager2|TelPager3|
+|TelTextphoneWork|TelTextphoneHome|TelTextphone0|TelTextphone1|TelTextphone2|TelTextphone3|
 
 ### EMAIL:
 https://datatracker.ietf.org/doc/html/rfc6350#section-6.4.2
 
-[Email(Work|Home|0|1|2)][EmailPref]
+|EmailWork|EmailWork|EmailHome|Email0|Email1|Email2)|EmailPref|
 
 In the RFC each email address can have a preference. Only the Email with the heigest preference is linkt in the field "EmailPref"
 
 ### TITLE:
 https://datatracker.ietf.org/doc/html/rfc6350#section-6.6.1
 
-[Title]
+|Title|
 
 ### ORG:
 https://datatracker.ietf.org/doc/html/rfc6350#section-6.6.4
 
-[Organisation][Unit]
+|Organisation|Unit|
 
 ### NOTE:
 https://datatracker.ietf.org/doc/html/rfc6350#section-6.7.2
 
-[Note]
+|Note|
 
 
 ## Type:
