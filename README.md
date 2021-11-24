@@ -3,87 +3,67 @@ The converter is based on VCard version 4 [RFC6350](https://datatracker.ietf.org
 
 ## Start the Script
 
-python3 vcf2csv.py -l -p -i vards.vcf -o contacts.csv
+```python3 vcf2csv.py -l -p -i vards.vcf -o contacts.csv```
 
 Options: 
 
+```
 -i = Specified the Infile like -i vards.vcf
 -o = Specified the Outfile like -o contacts.csv
 -l = logs go to stdout 
 -p = Add Photos to csv from vcf.
+```
 
 ## Currently this data is being converted: 
 
 ### N:
 https://datatracker.ietf.org/doc/html/rfc6350#section-6.2.2
 
-#### CSV-Header:
-Name
-GivenNames
-AdditionalNames
-Prefixes
-Suffixes
+[Name]
+[GivenNames]
+[AdditionalNames]
+[Prefixes]
+[Suffixes]
 
 ### PHOTO:
 https://datatracker.ietf.org/doc/html/rfc6350#section-6.2.4
 
 Is Base64-Encodet-Img or a URL
 
-#### CSV-Header:
-Photo
+[Photo]
 
 ### ADR:
 https://datatracker.ietf.org/doc/html/rfc6350#section-6.3.1
 
-#### CSV-Header:
-
-PostOfficeBox(None|Work|Home)
-ExtendedAddress(None|Work|Home)
-Street(None|Work|Home)
-City(None|Work|Home)
-Region(None|Work|Home)
-PostalCode(None|Work|Home)
-Country(None|Work|Home)
+[PostOfficeBox(None|Work|Home)][ExtendedAddress(None|Work|Home)][Street(None|Work|Home)][City(None|Work|Home)][Region(None|Work|Home)][PostalCodeNone|Work|Home)][Country(None|Work|Home)]
 
 ### TEL:
 https://datatracker.ietf.org/doc/html/rfc6350#section-6.4.1
 
 #### CSV-Header:
-TelText(Work|Home|0|1|2|3)
-TelVoice(Work|Home|0|1|2|3)
-TelFax(Work|Home|0|1|2|3)
-TelCell(Work|Home|0|1|2|3)
-TelVideo(Work|Home|0|1|2|3)
-TelPager(Work|Home|0|1|2|3)
-TelTextphone(Work|Home|0|1|2|3)
+[TelText(Work|Home|0|1|2|3)][TelVoice(Work|Home|0|1|2|3)][TelFax(Work|Home|0|1|2|3)][TelCell(Work|Home|0|1|2|3)][TelVideo(Work|Home|0|1|2|3)][TelPager(Work|Home|0|1|2|3)][TelTextphone(Work|Home|0|1|2|3)]
 
 ### EMAIL:
 https://datatracker.ietf.org/doc/html/rfc6350#section-6.4.2
 
-#### CSV-Header:
-Email(Work|Home|0|1|2)
-EmailPref
+[Email(Work|Home|0|1|2)][EmailPref]
 
 In the RFC each email address can have a preference. Only the Email with the heigest preference is linkt in the field "EmailPref"
 
-#### Vcard TITLE
+### TITLE:
 https://datatracker.ietf.org/doc/html/rfc6350#section-6.6.1
 
-#### CSV-Header:
-Title = Job position
+[Title]
 
 ### ORG:
 https://datatracker.ietf.org/doc/html/rfc6350#section-6.6.4
 
-#### CSV-Header:
-Organisation
-Unit
+[Organisation][Unit]
 
 ### NOTE:
 https://datatracker.ietf.org/doc/html/rfc6350#section-6.7.2
 
-#### CSV-Header:
-Note
+[Note]
 
 
 ## Type:
