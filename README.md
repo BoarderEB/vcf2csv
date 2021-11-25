@@ -83,7 +83,7 @@ https://datatracker.ietf.org/doc/html/rfc6350#section-6.4.1
 ### EMAIL:
 https://datatracker.ietf.org/doc/html/rfc6350#section-6.4.2
 
-|EmailWork|EmailWork|EmailHome|Email0|Email1|Email2)|EmailPref|
+|EmailWork|EmailWork|EmailHome|Email0|Email1|Email2|EmailPref|
 |-----|-----|-----|-----|-----|-----|-----|
 
 In the RFC each email address can have a preference. Only the Email with the heigest preference is linkt in the field "EmailPref"
