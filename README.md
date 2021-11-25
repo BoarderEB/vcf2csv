@@ -3,7 +3,7 @@ The converter is based on VCard version 4 [RFC6350](https://datatracker.ietf.org
 
 ## Start the Script
 
-```python3 vcf2csv.py -l -p -i vards.vcf -o contacts.csv```
+```python3 vcf2csv.py -p -i vards.vcf -o contacts.csv```
 
 Options: 
 
