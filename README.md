@@ -12,6 +12,7 @@ Options:
 -o = Specified the Outfile like -o contacts.csv
 -l = logs go to stdout 
 -p = Add Photos to csv from vcf.
+--TelNoTyp = Telephone numbers are only converted as Tel0, Tel1, Tel2 and TelFax
 ```
 
 ## Currently this data is being converted: 
@@ -79,6 +80,13 @@ https://datatracker.ietf.org/doc/html/rfc6350#section-6.4.1
 
 |TelTextphoneWork|TelTextphoneHome|TelTextphone0|TelTextphone1|TelTextphone2|TelTextphone3|
 |-----|-----|-----|-----|-----|-----|
+
+#### CSV-Header Option: --TelNoTyp:
+
+|Tel0|Tel1|Tel2|TelFax|
+|----|----|----|------|
+
+If more than 3 Numbers, they are appended in Tel2 
 
 ### EMAIL:
 https://datatracker.ietf.org/doc/html/rfc6350#section-6.4.2

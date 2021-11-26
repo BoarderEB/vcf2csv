@@ -11,6 +11,7 @@ InFile = ''
 OutFile = ''
 Log = "false" #true / false
 AddPhotoToCsv = "false" #true / false
+TelNoTyp = "false"
 
 for Index, Arg in enumerate(sys.argv):
     
@@ -30,6 +31,10 @@ for Index, Arg in enumerate(sys.argv):
     ArgTest = re.match("^-[a-zA-Z]{0,}p", Arg)
     if ArgTest:
         AddPhotoToCsv = "true"
+    ##TelNoTyp
+    ArgTest = re.match("^--[tT][eE][ll][nN][oO][tT][yY][pP]", Arg)
+    if ArgTest:
+        TelNoTyp = "true"
 
 if InFile == '':
     print("Error: No Infile \"-i file.vcf\" is specified")
@@ -82,52 +87,59 @@ fieldnames = [
     'Email1',
     'Email2',
     'EmailPref',
-    'TelTextWork',
-    'TelVoiceWork',
-    'TelFaxWork',
-    'TelCellWork',
-    'TelVideoWork',
-    'TelPagerWork',
-    'TelTextphoneWork',
-    'TelTextHome',
-    'TelVoiceHome',
-    'TelFaxHome',
-    'TelCellHome',
-    'TelVideoHome',
-    'TelPagerHome',
-    'TelTextphoneHome',
-    'TelText0',
-    'TelVoice0',
-    'TelFax0',
-    'TelCell0',
-    'TelVideo0',
-    'TelPager0',
-    'TelTextphone0',
-    'TelText1',
-    'TelVoice1',
-    'TelFax1',
-    'TelCell1',
-    'TelVideo1',
-    'TelPager1',
-    'TelTextphone1',
-    'TelText2',
-    'TelVoice2',
-    'TelFax2',
-    'TelCell2',
-    'TelVideo2',
-    'TelPager2',
-    'TelTextphone2',
-    'TelText3',
-    'TelVoice3',
-    'TelFax3',
-    'TelCell3',
-    'TelVideo3',
-    'TelPager3',
-    'TelTextphone3',
     'Note'
     ]
 
-if AddPhotoToCsv:
+if TelNoTyp == 'true':
+    fieldnames.append('Tel0')
+    fieldnames.append('Tel1')
+    fieldnames.append('Tel2')
+    fieldnames.append('TelFax')
+else:
+    fieldnames.append('TelTextWork')
+    fieldnames.append('TelVoiceWork')
+    fieldnames.append('TelFaxWork')
+    fieldnames.append('TelCellWork')
+    fieldnames.append('TelVideoWork')
+    fieldnames.append('TelPagerWork')
+    fieldnames.append('TelTextphoneWork')
+    fieldnames.append('TelTextHome')
+    fieldnames.append('TelVoiceHome')
+    fieldnames.append('TelFaxHome')
+    fieldnames.append('TelCellHome')
+    fieldnames.append('TelVideoHome')
+    fieldnames.append('TelPagerHome')
+    fieldnames.append('TelTextphoneHome')
+    fieldnames.append('TelText0')
+    fieldnames.append('TelVoice0')
+    fieldnames.append('TelFax0')
+    fieldnames.append('TelCell0')
+    fieldnames.append('TelVideo0')
+    fieldnames.append('TelPager0')
+    fieldnames.append('TelTextphone0')
+    fieldnames.append('TelText1')
+    fieldnames.append('TelVoice1')
+    fieldnames.append('TelFax1')
+    fieldnames.append('TelCell1')
+    fieldnames.append('TelVideo1')
+    fieldnames.append('TelPager1')
+    fieldnames.append('TelTextphone1')
+    fieldnames.append('TelText2')
+    fieldnames.append('TelVoice2')
+    fieldnames.append('TelFax2')
+    fieldnames.append('TelCell2')
+    fieldnames.append('TelVideo2')
+    fieldnames.append('TelPager2')
+    fieldnames.append('TelTextphone2')
+    fieldnames.append('TelText3')
+    fieldnames.append('TelVoice3')
+    fieldnames.append('TelFax3')
+    fieldnames.append('TelCell3')
+    fieldnames.append('TelVideo3')
+    fieldnames.append('TelPager3')
+    fieldnames.append('TelTextphone3')
+
+if AddPhotoToCsv == 'true':
     fieldnames.append('Photo')
 
 ## write header of csv-file
@@ -241,136 +253,148 @@ with open(InFile) as file:
                     IsVcardTelPager = re.match(".*[tT][yY][pP][eE][=].*[pP][aA][gG][eE][rR]\W|.*[tT][yY][pP][eE][=].*[pP][aA][gG][eE][rR]$", TelPre)
                     IsVcardTelTextphone = re.match(".*[tT][yY][pP][eE][=].*[tT][eE][xX][tT][pP][hH][oO][nN][eE]\W|.*[tT][yY][pP][eE][=].*[tT][eE][xX][tT][pP][hH][oO][nN][eE]$", TelPre)
 
-                    if IsVcardTelWork:
-                        if IsVcardTelCell:
-                            TelCellWork = TelSuf
-                        elif IsVcardTelVoice:
-                            TelVoiceWork = TelSuf
-                        elif IsVcardTelText:
-                            TelTextWork = TelSuf
-                        elif IsVcardTelFax:
-                            TelFaxWork = TelSuf
-                        elif IsVcardTelVideo:
-                            TelVideoWork = TelSuf
-                        elif IsVcardTelPager:
-                            TelPagerWork = TelSuf
-                        elif IsVcardTelTextphone:
-                            TelTextphoneWork = TelSuf
+                    if TelNoTyp == 'true':
+                        if IsVcardTelFax:
+                            TelFax = TelSuf
+                        elif Tel0 == '':
+                            Tel0 = TelSuf
+                        elif Tel1 == '':
+                            Tel2 = TelSuf
+                        elif Tel2 == '':
+                            Tel2 = TelSuf
                         else:
-                            TelVoiceWork = TelSuf
-                    elif IsVcardTelHome:
-                        if IsVcardTelCell:
-                            TelCellHome = TelSuf
-                        elif IsVcardTelVoice:
-                            TelVoiceHome = TelSuf
-                        elif IsVcardTelText:
-                            TelTextHome = TelSuf
-                        elif IsVcardTelFax:
-                            TelFaxHome = TelSuf
-                        elif IsVcardTelVideo:
-                            TelVideoHome = TelSuf
-                        elif IsVcardTelPager:
-                            TelPagerHome = TelSuf
-                        elif IsVcardTelTextphone:
-                            TelTextphoneHome = TelSuf
+                            Tel2 = "".join((Tel2,', ',TelSuf))
+                    else:                            
+                        if IsVcardTelWork:
+                            if IsVcardTelCell:
+                                TelCellWork = TelSuf
+                            elif IsVcardTelVoice:
+                                TelVoiceWork = TelSuf
+                            elif IsVcardTelText:
+                                TelTextWork = TelSuf
+                            elif IsVcardTelFax:
+                                TelFaxWork = TelSuf
+                            elif IsVcardTelVideo:
+                                TelVideoWork = TelSuf
+                            elif IsVcardTelPager:
+                                TelPagerWork = TelSuf
+                            elif IsVcardTelTextphone:
+                                TelTextphoneWork = TelSuf
+                            else:
+                                TelVoiceWork = TelSuf
+                        elif IsVcardTelHome:
+                            if IsVcardTelCell:
+                                TelCellHome = TelSuf
+                            elif IsVcardTelVoice:
+                                TelVoiceHome = TelSuf
+                            elif IsVcardTelText:
+                                TelTextHome = TelSuf
+                            elif IsVcardTelFax:
+                                TelFaxHome = TelSuf
+                            elif IsVcardTelVideo:
+                                TelVideoHome = TelSuf
+                            elif IsVcardTelPager:
+                                TelPagerHome = TelSuf
+                            elif IsVcardTelTextphone:
+                                TelTextphoneHome = TelSuf
+                            else:
+                                TelVoiceHome = TelSuf
                         else:
-                            TelVoiceHome = TelSuf
-                    else:
-                        if IsVcardTelCell:
-                            if TelCell0 == '':
-                                TelCell0 = TelSuf
-                            elif TelCell1 == '':
-                                TelCell1 = TelSuf
-                            elif TelCell2 == '':
-                                TelCell2 = TelSuf
-                            elif TelCell3 == '':
-                                TelCell3 = TelSuf
-                            else:
-                                TelCell3 = "".join((TelCell3,', ',TelSuf))
+                            if IsVcardTelCell:
+                                if TelCell0 == '':
+                                    TelCell0 = TelSuf
+                                elif TelCell1 == '':
+                                    TelCell1 = TelSuf
+                                elif TelCell2 == '':
+                                    TelCell2 = TelSuf
+                                elif TelCell3 == '':
+                                    TelCell3 = TelSuf
+                                else:
+                                    TelCell3 = "".join((TelCell3,', ',TelSuf))
 
-                        elif IsVcardTelVoice:
-                            if TelVoice0 == '':
-                                TelVoice0 = TelSuf
-                            elif TelVoice1 == '':
-                                TelVoice1 = TelSuf
-                            elif TelVoice2 == '':
-                                TelVoice2 = TelSuf
-                            elif TelVoice3 == '':
-                                TelVoice3 = TelSuf
-                            else:
-                                TelVoice3 = "".join((TelVoice3,', ',TelSuf))
-                            
-                        elif IsVcardTelText:
-                            if TelText0 == '':
-                                TelText0 = TelSuf
-                            elif TelText1 == '':
-                                TelText1 = TelSuf
-                            elif TelText2 == '':
-                                TelText2 = TelSuf
-                            elif TelText3 == '':
-                                TelText3 = TelSuf
-                            else:
-                                TelText3 = "".join((TelText3,', ',TelSuf))
+                            elif IsVcardTelVoice:
+                                if TelVoice0 == '':
+                                    TelVoice0 = TelSuf
+                                elif TelVoice1 == '':
+                                    TelVoice1 = TelSuf
+                                elif TelVoice2 == '':
+                                    TelVoice2 = TelSuf
+                                elif TelVoice3 == '':
+                                    TelVoice3 = TelSuf
+                                else:
+                                    TelVoice3 = "".join((TelVoice3,', ',TelSuf))
+                                
+                            elif IsVcardTelText:
+                                if TelText0 == '':
+                                    TelText0 = TelSuf
+                                elif TelText1 == '':
+                                    TelText1 = TelSuf
+                                elif TelText2 == '':
+                                    TelText2 = TelSuf
+                                elif TelText3 == '':
+                                    TelText3 = TelSuf
+                                else:
+                                    TelText3 = "".join((TelText3,', ',TelSuf))
 
-                        elif IsVcardTelFax:
-                            if TelFax0 == '':
-                                TelFax0 = TelSuf
-                            elif TelFax1 == '':
-                                TelFax1 = TelSuf
-                            elif TelFax2 == '':
-                                TelFax2 = TelSuf
-                            elif TelFax3 == '':
-                                TelFax3 = TelSuf
-                            else:
-                                TelFax3 = "".join((TelFax3,', ',TelSuf))
+                            elif IsVcardTelFax:
+                                if TelFax0 == '':
+                                    TelFax0 = TelSuf
+                                elif TelFax1 == '':
+                                    TelFax1 = TelSuf
+                                elif TelFax2 == '':
+                                    TelFax2 = TelSuf
+                                elif TelFax3 == '':
+                                    TelFax3 = TelSuf
+                                else:
+                                    TelFax3 = "".join((TelFax3,', ',TelSuf))
 
-                        elif IsVcardTelVideo:
-                            if TelVideo0 == '':
-                                TelVideo0 = TelSuf
-                            elif TelVideo1 == '':
-                                TelVideo1 = TelSuf
-                            elif TelVideo2 == '':
-                                TelVideo2 = TelSuf
-                            elif TelVideo3 == '':
-                                TelVideo3 = TelSuf
-                            else:
-                                TelVideo3 = "".join((TelVideo3,', ',TelSuf))
+                            elif IsVcardTelVideo:
+                                if TelVideo0 == '':
+                                    TelVideo0 = TelSuf
+                                elif TelVideo1 == '':
+                                    TelVideo1 = TelSuf
+                                elif TelVideo2 == '':
+                                    TelVideo2 = TelSuf
+                                elif TelVideo3 == '':
+                                    TelVideo3 = TelSuf
+                                else:
+                                    TelVideo3 = "".join((TelVideo3,', ',TelSuf))
 
-                        elif IsVcardTelPager:
-                            if TelPager0 == '':
-                                TelPager0 = TelSuf
-                            elif TelPager1 == '':
-                                TelPager1 = TelSuf
-                            elif TelPager2 == '':
-                                TelPager2 = TelSuf
-                            elif TelPager3 == '':
-                                TelPager3 = TelSuf
-                            else:
-                                TelPager3 = "".join((TelPager3,', ',TelSuf))
+                            elif IsVcardTelPager:
+                                if TelPager0 == '':
+                                    TelPager0 = TelSuf
+                                elif TelPager1 == '':
+                                    TelPager1 = TelSuf
+                                elif TelPager2 == '':
+                                    TelPager2 = TelSuf
+                                elif TelPager3 == '':
+                                    TelPager3 = TelSuf
+                                else:
+                                    TelPager3 = "".join((TelPager3,', ',TelSuf))
 
-                        elif IsVcardTelTextphone:
-                            if TelTextphone0 == '':
-                                TelTextphone0 = TelSuf
-                            elif TelTextphone1 == '':
-                                TelTextphone1 = TelSuf
-                            elif TelTextphone2 == '':
-                                TelTextphone2 = TelSuf
-                            elif TelTextphone3 == '':
-                                TelTextphone3 = TelSuf
-                            else:
-                                TelTextphone3 = "".join((TelTextphone3,', ',TelSuf))
+                            elif IsVcardTelTextphone:
+                                if TelTextphone0 == '':
+                                    TelTextphone0 = TelSuf
+                                elif TelTextphone1 == '':
+                                    TelTextphone1 = TelSuf
+                                elif TelTextphone2 == '':
+                                    TelTextphone2 = TelSuf
+                                elif TelTextphone3 == '':
+                                    TelTextphone3 = TelSuf
+                                else:
+                                    TelTextphone3 = "".join((TelTextphone3,', ',TelSuf))
 
-                        else:
-                            if TelVoice0 == '':
-                                TelVoice0 = TelSuf
-                            elif TelVoice1 == '':
-                                TelVoice1 = TelSuf
-                            elif TelVoice2 == '':
-                                TelVoice2 = TelSuf
-                            elif TelVoice3 == '':
-                                TelVoice3 = TelSuf
                             else:
-                                TelVoice3 = "".join((TelVoice3,', ',TelSuf))
+                                if TelVoice0 == '':
+                                    TelVoice0 = TelSuf
+                                elif TelVoice1 == '':
+                                    TelVoice1 = TelSuf
+                                elif TelVoice2 == '':
+                                    TelVoice2 = TelSuf
+                                elif TelVoice3 == '':
+                                    TelVoice3 = TelSuf
+                                else:
+                                    TelVoice3 = "".join((TelVoice3,', ',TelSuf))
 
                 ### Vcard EMAIL
                 ### https://datatracker.ietf.org/doc/html/rfc6350#section-6.4.2
