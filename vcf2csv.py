@@ -259,7 +259,7 @@ with open(InFile) as file:
                         elif Tel0 == '':
                             Tel0 = TelSuf
                         elif Tel1 == '':
-                            Tel2 = TelSuf
+                            Tel1 = TelSuf
                         elif Tel2 == '':
                             Tel2 = TelSuf
                         else:
