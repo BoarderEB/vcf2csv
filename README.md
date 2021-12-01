@@ -13,6 +13,7 @@ Options:
 -l = logs go to stdout 
 -p = Add Photos to csv from vcf.
 --TelNoTyp = Telephone numbers are only converted as Tel0, Tel1, Tel2 and TelFax
+--MustHaveUid = If there no Uid don't write Vcard to csv-File
 ```
 
 ## Currently this data is being converted: 

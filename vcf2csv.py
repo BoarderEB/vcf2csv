@@ -13,6 +13,7 @@ OutFile = ''
 Log = "false" #true / false
 AddPhotoToCsv = "false" #true / false
 TelNoTyp = "false"
+MustHaveUid = "false"
 
 for Index, Arg in enumerate(sys.argv):
     
@@ -36,6 +37,10 @@ for Index, Arg in enumerate(sys.argv):
     ArgTest = re.match("^--[tT][eE][ll][nN][oO][tT][yY][pP]", Arg)
     if ArgTest:
         TelNoTyp = "true"
+    ##MustHaveUid
+    ArgTest = re.match("^--[mM][uU][sS][tT][hH][aA][vV][eE][uU][iI][dD]", Arg)
+    if ArgTest:
+        MustHaveUid = "true"
 
 if InFile == '':
     print("Error: No Infile \"-i file.vcf\" is specified")
@@ -148,6 +153,17 @@ if AddPhotoToCsv == 'true':
 with open(OutFile, 'w', newline='', encoding='utf-8') as csvfile:   
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter=';')
     writer.writeheader()
+
+## write Vcard-Lins of csv-file
+def WriteVcard2Csv():
+    with open(OutFile, 'a', newline='', encoding='utf-8') as csvfile:
+        writer = csv.writer(csvfile, delimiter=';')
+        ToWrite = []
+        for i in fieldnames:                   
+            #print(globals()[i])
+            ToWrite.append(globals()[i])
+        writer.writerow(ToWrite)
+
 
 ## read vcf-file
 with open(InFile) as file:
@@ -632,13 +648,19 @@ with open(InFile) as file:
                 print("TelText2:", TelText2,"TelVoice2: ",TelVoice2,"TelFax2: ",TelFax2,"TelCell2: ",TelCell2,"TelVideo2: ",TelVideo2,"TelPager2: ",TelPager2,"TelTextphone2: ",TelTextphone2)
                 print("TelText3:", TelText3,"TelVoice3: ",TelVoice3,"TelFax3: ",TelFax3,"TelCell3: ",TelCell3,"TelVideo3: ",TelVideo3,"TelPager3: ",TelPager3,"TelTextphone3: ",TelTextphone3)
 
-            with open(OutFile, 'a', newline='', encoding='utf-8') as csvfile:
-                writer = csv.writer(csvfile, delimiter=';')
-                ToWrite = []
-                for i in fieldnames:                   
-                    #print(globals()[i])
-                    ToWrite.append(globals()[i])
-                writer.writerow(ToWrite)
+            if MustHaveUid == 'true':
+                if Uid != '':
+                    WriteVcard2Csv()
+                    if Log == 'true':
+                        print('Write Vcard to CSV')
+                else:
+                    if Log == 'true':
+                        print('Don\'t write Vcard to CSV - there is no Uid')
+            else:
+                WriteVcard2Csv()
+                if Log == 'true':
+                        print('Write Vcard to CSV')
+
 
             if Log == 'true':
                 count += 1
