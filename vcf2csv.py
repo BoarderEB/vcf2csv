@@ -2,6 +2,7 @@
 # GPLv2+
 # V: 0.01-Alpha
 
+from os import replace
 import re
 import csv
 import sys
@@ -87,7 +88,8 @@ fieldnames = [
     'Email1',
     'Email2',
     'EmailPref',
-    'Note'
+    'Note',
+    'Uid'
     ]
 
 if TelNoTyp == 'true':
@@ -177,6 +179,18 @@ with open(InFile) as file:
 
             ## Start Export new VCard
             for Index, CurLine in enumerate(VCard):
+
+                ### VCard Uid
+                ### https://datatracker.ietf.org/doc/html/rfc6350#section-6.7.6
+
+                IsVcardUid = re.match("^[uU][iI][dD].{0,}[:]", CurLine)
+                if IsVcardUid:
+                    UidSuf = re.sub(r'^[uU][iI][dD].{0,}[:]','',CurLine)
+                    UidPre = CurLine.replace(UidSuf,'')
+                    Uid = UidSuf
+
+                    if Log == 'true':
+                        print('Uid: ', Uid)
 
                 ### VCard Note
                 ### https://datatracker.ietf.org/doc/html/rfc6350#section-6.7.2

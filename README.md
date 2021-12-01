@@ -114,6 +114,12 @@ https://datatracker.ietf.org/doc/html/rfc6350#section-6.7.2
 |Note|
 |----|
 
+# UID
+https://datatracker.ietf.org/doc/html/rfc6350#section-6.7.6
+
+|Uid|
+|----|
+
 ## Type:
 https://datatracker.ietf.org/doc/html/rfc6350#section-5.6
 
