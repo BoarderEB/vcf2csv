@@ -7,6 +7,7 @@ import re
 import csv
 import sys
 import os.path
+import io
 
 InFile = ''
 OutFile = ''
@@ -14,6 +15,7 @@ Log = "false" #true / false
 AddPhotoToCsv = "false" #true / false
 TelNoTyp = "false"
 MustHaveUid = "false"
+Encoding = "UTF-8"
 
 for Index, Arg in enumerate(sys.argv):
     
@@ -25,6 +27,11 @@ for Index, Arg in enumerate(sys.argv):
     if Arg == '-o':
         ArgNext = Index + 1
         OutFile = sys.argv[ArgNext]
+
+    if Arg == '-e':
+        ArgNext = Index + 1
+        Encoding = sys.argv[ArgNext]
+
     ## Log to STDOUT -l
     ArgTest = re.match("^-[a-zA-Z]{0,}l", Arg)
     if ArgTest:
@@ -41,6 +48,9 @@ for Index, Arg in enumerate(sys.argv):
     ArgTest = re.match("^--[mM][uU][sS][tT][hH][aA][vV][eE][uU][iI][dD]", Arg)
     if ArgTest:
         MustHaveUid = "true"
+
+
+
 
 if InFile == '':
     print("Error: No Infile \"-i file.vcf\" is specified")
@@ -150,13 +160,13 @@ if AddPhotoToCsv == 'true':
     fieldnames.append('Photo')
 
 ## write header of csv-file
-with open(OutFile, 'w', newline='', encoding='utf-8') as csvfile:   
+with open(OutFile, 'w', newline='', encoding=Encoding) as csvfile:   
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter=';')
     writer.writeheader()
 
 ## write Vcard-Lins of csv-file
 def WriteVcard2Csv():
-    with open(OutFile, 'a', newline='', encoding='utf-8') as csvfile:
+    with open(OutFile, 'a', newline='', encoding=Encoding) as csvfile:
         writer = csv.writer(csvfile, delimiter=';')
         ToWrite = []
         for i in fieldnames:                   
@@ -166,7 +176,7 @@ def WriteVcard2Csv():
 
 
 ## read vcf-file
-with open(InFile) as file:
+with io.open(InFile, mode="r", encoding="utf-8") as file:
     for Line in file:
         CurLine = Line.rstrip()
    
