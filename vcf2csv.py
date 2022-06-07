@@ -176,7 +176,7 @@ def WriteVcard2Csv():
 
 
 ## read vcf-file
-with io.open(InFile, mode="r", encoding="utf-8") as file:
+with io.open(InFile, mode="r", encoding=Encoding) as file:
     for Line in file:
         CurLine = Line.rstrip()
    
