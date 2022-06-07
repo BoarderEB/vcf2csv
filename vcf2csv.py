@@ -69,6 +69,7 @@ count = 0 # VCard-Count
 VCard = [] #VCard as array
 
 fieldnames = [
+    'FormattedName',
     'Name',
     'GivenNames',
     'AdditionalNames',
@@ -580,6 +581,16 @@ with io.open(InFile, mode="r", encoding=Encoding) as file:
                         print('ADR-Work!: ','PostOfficeBox: ',PostOfficeBoxWork, 'ExtendedAddress: ', ExtendedAddressWork, 'Street: ',StreetWork, 'City: ',CityWork, 'Region: ',RegionWork, 'PostalCode: ',PostalCodeWork, 'Country: ',CountryWork)
                         print('ADR-Home!: ','PostOfficeBox: ',PostOfficeBoxHome, 'ExtendedAddress: ', ExtendedAddressHome, 'Street: ',StreetHome, 'City: ',CityHome, 'Region: ',RegionHome, 'PostalCode: ',PostalCodeHome, 'Country: ',CountryHome)
                         print('ADR!: ','PostOfficeBox: ',PostOfficeBox, 'ExtendedAddress: ', ExtendedAddress, 'Street: ',Street, 'City: ',City, 'Region: ',Region, 'PostalCode: ',PostalCode, 'Country: ',Country)
+
+                ### Vcard FN
+                ### Referenz: https://datatracker.ietf.org/doc/html/rfc6350#section-6.2.2
+                IsVcardFN = re.match("^[fF][nN][:]|^[fF][nN][;].{0,}[:]", CurLine)
+                if IsVcardFN:
+                    N = CurLine.split(':',1)
+                    FormattedName = N[1].replace('\\','')
+                    
+                    if Log == 'true':
+                        print("FormattedName: ",FormattedName)  
 
                 ### Vcard N
                 ### Referenz: https://datatracker.ietf.org/doc/html/rfc6350#section-6.2.2
