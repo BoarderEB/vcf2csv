@@ -8,8 +8,8 @@ The converter is based on VCard version 4 [RFC6350](https://datatracker.ietf.org
 Options: 
 
 ```
--i = Specified the Infile like -i vards.vcf
--o = Specified the Outfile like -o contacts.csv
+-i = Specified the **Infile** like -i vards.vcf
+-o = Specified the **Outfile** like -o contacts.csv
 -e = Specified the **Encoding** of the files like -e "UTF-8" [default = UTF-8]
 -l = logs go to stdout 
 -p = Add Photos to csv from vcf.
