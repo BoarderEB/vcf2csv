@@ -59,7 +59,7 @@ https://datatracker.ietf.org/doc/html/rfc6350#section-6.3.1
 ### TEL:
 https://datatracker.ietf.org/doc/html/rfc6350#section-6.4.1
 
-#### CSV-Header:
+### CSV-Header:
 
 |TelVoiceWork|TelVoiceHome|TelVoice0|TelVoice1|TelVoice2|TelVoice3|
 |-----|-----|-----|-----|-----|-----|
@@ -82,7 +82,7 @@ https://datatracker.ietf.org/doc/html/rfc6350#section-6.4.1
 |TelTextphoneWork|TelTextphoneHome|TelTextphone0|TelTextphone1|TelTextphone2|TelTextphone3|
 |-----|-----|-----|-----|-----|-----|
 
-#### CSV-Header Option: --TelNoTyp:
+### CSV-Header Option: --TelNoTyp:
 
 |Tel0|Tel1|Tel2|TelFax|
 |----|----|----|------|
@@ -115,13 +115,13 @@ https://datatracker.ietf.org/doc/html/rfc6350#section-6.7.2
 |Note|
 |----|
 
-# UID
+### UID
 https://datatracker.ietf.org/doc/html/rfc6350#section-6.7.6
 
 |Uid|
 |----|
 
-## Type:
+### Type:
 https://datatracker.ietf.org/doc/html/rfc6350#section-5.6
 
 In the RFC6350 is Type 
@@ -135,13 +135,13 @@ In the RFC6350 is Type
 
 To create predictability for a database query is converted differently from the RCF
 
-## Adr:
+#### Adr:
 
 1. AdrWork
 2. AdrHome
 3. AdrNone = None or Individual (if there are several - overwritten by the last)
 
-## Tel:
+#### Tel:
 
 1. TelWork
 2. TelHome
@@ -151,7 +151,7 @@ To create predictability for a database query is converted differently from the 
 6. Tel3 = None or Individual (if there are more of None or Individual - they addet separetet by commy in this this)
 
 
-## Email:
+#### Email:
 
 1. EmailWork
 2. EmailHome
