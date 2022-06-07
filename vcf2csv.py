@@ -664,10 +664,6 @@ with io.open(InFile, mode="r", encoding=Encoding) as file:
             if Log == 'true':    
                 if TelNoTyp == 'true':
                     print("Tel0:", Tel0,"Tel1: ",Tel1,"Tel2: ",Tel2,"TelFax: ",TelFax)
-                    fieldnames.append('Tel0')
-                    fieldnames.append('Tel1')
-                    fieldnames.append('Tel2')
-                    fieldnames.append('TelFax')
                 else:
                     print("TelTextWork:", TelTextWork,"TelVoiceWork: ",TelVoiceWork,"TelFaxWork: ",TelFaxWork,"TelCellWork: ",TelCellWork,"TelVideoWork: ",TelVideoWork,"TelPagerWork: ",TelPagerWork,"TelTextphoneWork: ",TelTextphoneWork)
                     print("TelTextHome:", TelTextHome,"TelVoiceHome: ",TelVoiceHome,"TelFaxHome: ",TelFaxHome,"TelCellHome: ",TelCellHome,"TelVideoHome: ",TelVideoHome,"TelPagerHome: ",TelPagerHome,"TelTextphoneHome: ",TelTextphoneHome)
