@@ -650,13 +650,20 @@ with io.open(InFile, mode="r", encoding=Encoding) as file:
                     if Log == 'true':  
                         print(Title)
 
-            if Log == 'true':        
-                print("TelTextWork:", TelTextWork,"TelVoiceWork: ",TelVoiceWork,"TelFaxWork: ",TelFaxWork,"TelCellWork: ",TelCellWork,"TelVideoWork: ",TelVideoWork,"TelPagerWork: ",TelPagerWork,"TelTextphoneWork: ",TelTextphoneWork)
-                print("TelTextHome:", TelTextHome,"TelVoiceHome: ",TelVoiceHome,"TelFaxHome: ",TelFaxHome,"TelCellHome: ",TelCellHome,"TelVideoHome: ",TelVideoHome,"TelPagerHome: ",TelPagerHome,"TelTextphoneHome: ",TelTextphoneHome)
-                print("TelText0:", TelText0,"TelVoice0: ",TelVoice0,"TelFax0: ",TelFax0,"TelCell0: ",TelCell0,"TelVideo0: ",TelVideo0,"TelPager0: ",TelPager0,"TelTextphone0: ",TelTextphone0)
-                print("TelText1:", TelText1,"TelVoice1: ",TelVoice1,"TelFax1: ",TelFax1,"TelCell1: ",TelCell1,"TelVideo1: ",TelVideo1,"TelPager1: ",TelPager1,"TelTextphone1: ",TelTextphone1)
-                print("TelText2:", TelText2,"TelVoice2: ",TelVoice2,"TelFax2: ",TelFax2,"TelCell2: ",TelCell2,"TelVideo2: ",TelVideo2,"TelPager2: ",TelPager2,"TelTextphone2: ",TelTextphone2)
-                print("TelText3:", TelText3,"TelVoice3: ",TelVoice3,"TelFax3: ",TelFax3,"TelCell3: ",TelCell3,"TelVideo3: ",TelVideo3,"TelPager3: ",TelPager3,"TelTextphone3: ",TelTextphone3)
+            if Log == 'true':    
+                if TelNoTyp == 'true':
+                    print("Tel0:", Tel0,"Tel1: ",Tel1,"Tel2: ",Tel2,"TelFax: ",TelFax)
+                    fieldnames.append('Tel0')
+                    fieldnames.append('Tel1')
+                    fieldnames.append('Tel2')
+                    fieldnames.append('TelFax')
+                else:
+                    print("TelTextWork:", TelTextWork,"TelVoiceWork: ",TelVoiceWork,"TelFaxWork: ",TelFaxWork,"TelCellWork: ",TelCellWork,"TelVideoWork: ",TelVideoWork,"TelPagerWork: ",TelPagerWork,"TelTextphoneWork: ",TelTextphoneWork)
+                    print("TelTextHome:", TelTextHome,"TelVoiceHome: ",TelVoiceHome,"TelFaxHome: ",TelFaxHome,"TelCellHome: ",TelCellHome,"TelVideoHome: ",TelVideoHome,"TelPagerHome: ",TelPagerHome,"TelTextphoneHome: ",TelTextphoneHome)
+                    print("TelText0:", TelText0,"TelVoice0: ",TelVoice0,"TelFax0: ",TelFax0,"TelCell0: ",TelCell0,"TelVideo0: ",TelVideo0,"TelPager0: ",TelPager0,"TelTextphone0: ",TelTextphone0)
+                    print("TelText1:", TelText1,"TelVoice1: ",TelVoice1,"TelFax1: ",TelFax1,"TelCell1: ",TelCell1,"TelVideo1: ",TelVideo1,"TelPager1: ",TelPager1,"TelTextphone1: ",TelTextphone1)
+                    print("TelText2:", TelText2,"TelVoice2: ",TelVoice2,"TelFax2: ",TelFax2,"TelCell2: ",TelCell2,"TelVideo2: ",TelVideo2,"TelPager2: ",TelPager2,"TelTextphone2: ",TelTextphone2)
+                    print("TelText3:", TelText3,"TelVoice3: ",TelVoice3,"TelFax3: ",TelFax3,"TelCell3: ",TelCell3,"TelVideo3: ",TelVideo3,"TelPager3: ",TelPager3,"TelTextphone3: ",TelTextphone3)
 
             if MustHaveUid == 'true':
                 if Uid != '':
